@@ -246,3 +246,90 @@ body {
 .gridViewItem a {
     text-decoration: none;
 }
+.entityInfo {
+    padding: 40px 0 10px 0;
+    display: inline-block;
+    width: 100%;
+}
+.leftSection {
+    width: 30%;
+    float: left;
+    max-width: 250px;
+}
+.leftSection img {
+    width: 100%;
+}
+.rightSection {
+    width: 70%;
+    float: left;
+    padding: 5px 10px 5px 40px;
+    box-sizing: border-box;
+}
+.rightSection h2 {
+    margin-top: 0;
+}
+.rightSection p {
+    color: #939393;
+    font-weight: 200;
+}
+.trackList {
+    padding: 0;
+}
+.trackListRow {
+    height: 40px;
+    padding: 15px 10px;
+    list-style: none;
+}
+.trackListRow span {
+    color: #939393;
+    font-weight: 200;
+}
+.trackListRow:hover {
+    background-color: #282828;
+}
+.trackListRow .trackCount span{
+    width: 8%;
+    float: left;
+    visibility: visible;
+
+}
+.trackCount img {
+    width: 20px;
+    visibility: hidden;
+    position: absolute;
+    cursor: pointer;
+}
+.trackListRow:hover .trackCount img {
+    visibility: visible;
+}
+.trackListRow:hover .trackCount span {
+    visibility: hidden;
+}
+.trackListRow .trackInfo {
+    width: 75%;
+    float: left;
+}
+.trackInfo span{
+    display: block;
+}
+.trackInfo .trackName {
+    color: #fff;
+    margin-bottom: 5px;
+}
+.trackOptions {
+    width: 5%;
+    float: left;
+    text-align: right;
+}
+.trackOptions img{
+    width: 15px;
+    visibility: hidden;
+}
+.trackListRow:hover .trackOptions img{
+    visibility: visible;
+}
+.trackDuration {
+    width: 12%;
+    float: left;
+    text-align: right;
+}
