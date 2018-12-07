@@ -13,7 +13,28 @@
         currentPlaylist = <?php echo $jsonArray; ?>;
         audioElement = new Audio();
         setTrack(currentPlaylist[0], currentPlaylist, false);
+
+        $(".playbackBar .progressBar").mousedown(function() {
+            mouseDown = true;
+        });
+        $(".playbackBar .progressBar").mousemove(function(e) {
+            if(mouseDown) {
+                timeFromOffset(e, this)
+            }
+        });
+        $(".playbackBar .progressBar").mouseup(function(e) {
+            timeFromOffset(e, this);
+        });
     });
+    $(document).mouseup(function() { 
+        mouseDown = false;
+    })
+
+    function timeFromOffset(mouse, progressBar) {
+        var percentage = mouse.offsetX / $(progressBar).width() * 100;
+        var seconds = audioElement.audio.duration * (percentage /100);
+        audioElement.setTime(seconds);
+    }
 
     function setTrack(trackId, newPlaylist, play) {
         
@@ -30,15 +51,26 @@
                 var album = JSON.parse(data);
                 $(".albumArtwork").attr("src", album.artworkPath);
             });
-            
-        });
 
+            audioElement.setTrack(track);
+            playSong();
+        });
         if(play) {
             audioElement.play();
         }
     }
 
     function playSong() {
+
+        if(audioElement.audio.currentTime == 0) {
+            $.post("includes/handlers/ajax/updatePlays.php", {
+                songId: audioElement.currentlyPlaying.id
+            });
+            
+        } else {
+            console.log(`bbb`);
+        }
+
         $(".controlButton.play").hide();
         $(".controlButton.pause").show();
         audioElement.play();
